@@ -19,7 +19,7 @@ export class FuncionarioService {
   }
 
   update(id: number, updateFuncionarioDto: UpdateFuncionarioDto) {
-    return this.prisma.funcionario.update({where: {id: id}, data: UpdateFuncionarioDto});
+    return this.prisma.funcionario.update({where: {id: id}, data: updateFuncionarioDto});
   }
 
   remove(id: number) {
