@@ -11,18 +11,19 @@ export class FuncionarioService {
   }
 
   findAll() {
-    return `This action returns all funcionario`;
+    return this.prisma.funcionario.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} funcionario`;
+    return this.prisma.funcionario.findUnique({where: {id}});
   }
 
   update(id: number, updateFuncionarioDto: UpdateFuncionarioDto) {
-    return `This action updates a #${id} funcionario`;
+    return this.prisma.funcionario.update({where: {id: id}, data: UpdateFuncionarioDto});
   }
 
   remove(id: number) {
-    return `This action removes a #${id} funcionario`;
+    this.prisma.funcionario.delete({where:{id}})
+    return 'O usuário foi deletado com sucesso';
   }
 }
