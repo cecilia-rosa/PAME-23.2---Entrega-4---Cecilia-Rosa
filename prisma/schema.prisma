@@ -19,6 +19,8 @@ model funcionario{
   vendas Int
   data_contrato DateTime
   senha String
+  pedidos pedido[]
+  mesas mesa[]
 }
 
 model produto{
@@ -36,22 +38,30 @@ model categoria{
 
 model mesa{
   id Int @id @default(autoincrement()) @unique
-  id_funcionario Int
   pessoas Int
+  funcionarioId Int
+  funcionario funcionario @relation(fields: [funcionarioId], references: [id])
+  pedidos pedido[]
 }
 
 model pedido{
   id Int @id @default(autoincrement()) @unique
-  id_funcionario Int
   nome_cliente String
-  mesa Int
+  mesaId Int
   data DateTime
   valor_total Int
+  funcionarioId Int
+  funcionario funcionario @relation(fields: [funcionarioId], references: [id])
+  mesa mesa @relation(fields: [mesaId], references: [id])
+  relatorioId Int
+  relatorio relatorio @relation(fields: [relatorioId], references: [id])
+
 }
 
 model relatorio{
   id Int @id @default(autoincrement()) @unique
   total_pedidos Int
   receita Int
+  pedidos pedido[]
 }
 
