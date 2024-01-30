@@ -55,7 +55,6 @@ model pedido{
   mesa mesa @relation(fields: [mesaId], references: [id])
   relatorioId Int
   relatorio relatorio @relation(fields: [relatorioId], references: [id])
-
 }
 
 model relatorio{
