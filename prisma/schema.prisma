@@ -14,13 +14,15 @@ model funcionario{
   id Int @id @default(autoincrement()) @unique
   nome String
   email String @unique
-  cpf Int @unique
+  cpf String @unique
   telefone Int
   vendas Int
-  data_contrato DateTime
+  data_cadastro DateTime
   senha String
   pedidos pedido[]
   mesas mesa[]
+  produtos produto[]
+  relatorios relatorio[]
 }
 
 model produto{
@@ -32,6 +34,7 @@ model produto{
   categoriaId Int
   categoria categoria @relation(fields: [categoriaId], references: [id])
   pedidos pedido[]
+  funcionarios funcionario[]
 }
 
 model categoria{
@@ -67,5 +70,6 @@ model relatorio{
   total_pedidos Int
   receita Int
   pedidos pedido[]
+  funcionarios funcionario[]
 }
 
