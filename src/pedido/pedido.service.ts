@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePedidoDto } from './dto/create-pedido.dto';
 import { UpdatePedidoDto } from './dto/update-pedido.dto';
+import { PrismaService } from 'src/prisma/i/i.service';
 
 @Injectable()
 export class PedidoService {
+  constructor(private readonly prisma: PrismaService){}
   create(createPedidoDto: CreatePedidoDto) {
-    return 'This action adds a new pedido';
+    return this.prisma.pedido.create({data: createPedidoDto});
   }
 
   findAll() {

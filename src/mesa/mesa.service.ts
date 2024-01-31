@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMesaDto } from './dto/create-mesa.dto';
 import { UpdateMesaDto } from './dto/update-mesa.dto';
+import { PrismaService } from 'src/prisma/i/i.service';
 
 @Injectable()
 export class MesaService {
+  constructor(private readonly prisma: PrismaService){}
   create(createMesaDto: CreateMesaDto) {
-    return 'This action adds a new mesa';
+    return this.prisma.mesa.create({data: createMesaDto});
   }
 
   findAll() {
