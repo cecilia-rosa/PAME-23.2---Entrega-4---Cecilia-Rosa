@@ -11,18 +11,19 @@ export class RelatorioService {
   }
 
   findAll() {
-    return `This action returns all relatorio`;
+    return this.prisma.relatorio.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} relatorio`;
+    return this.prisma.relatorio.findUnique({where: {id}});
   }
 
   update(id: number, updateRelatorioDto: UpdateRelatorioDto) {
-    return `This action updates a #${id} relatorio`;
+    return this.prisma.relatorio.update({where:{id: id}, data: updateRelatorioDto});
   }
 
   remove(id: number) {
-    return `This action removes a #${id} relatorio`;
+    this.prisma.relatorio.delete({where:{id}});
+    return 'O relatorio foi deletado com sucesso'
   }
 }

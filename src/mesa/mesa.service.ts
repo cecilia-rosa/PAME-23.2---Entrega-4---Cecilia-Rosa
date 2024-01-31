@@ -11,18 +11,19 @@ export class MesaService {
   }
 
   findAll() {
-    return `This action returns all mesa`;
+    return this.prisma.mesa.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} mesa`;
+    return this.prisma.mesa.findUnique({where: {id}});
   }
 
   update(id: number, updateMesaDto: UpdateMesaDto) {
-    return `This action updates a #${id} mesa`;
+    return this.prisma.mesa.update({where:{id: id}, data: updateMesaDto});
   }
 
   remove(id: number) {
-    return `This action removes a #${id} mesa`;
+    this.prisma.mesa.delete({where:{id}});
+    return 'A mesa foi deletada com sucesso'
   }
 }

@@ -11,18 +11,19 @@ export class PedidoService {
   }
 
   findAll() {
-    return `This action returns all pedido`;
+    return this.prisma.pedido.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} pedido`;
+    return this.prisma.pedido.findUnique({where: {id}});
   }
 
   update(id: number, updatePedidoDto: UpdatePedidoDto) {
-    return `This action updates a #${id} pedido`;
+    return this.prisma.pedido.update({where:{id: id}, data: updatePedidoDto});
   }
 
   remove(id: number) {
-    return `This action removes a #${id} pedido`;
+    this.prisma.pedido.delete({where:{id}});
+    return 'O pedido foi deletado com sucesso'
   }
 }

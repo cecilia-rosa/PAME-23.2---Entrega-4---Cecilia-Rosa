@@ -11,18 +11,19 @@ export class ProdutoService {
   }
 
   findAll() {
-    return `This action returns all produto`;
+    return this.prisma.produto.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} produto`;
+    return this.prisma.produto.findUnique({where: {id}});
   }
 
   update(id: number, updateProdutoDto: UpdateProdutoDto) {
-    return `This action updates a #${id} produto`;
+    return this.prisma.produto.update({where:{id: id}, data: updateProdutoDto});
   }
 
   remove(id: number) {
-    return `This action removes a #${id} produto`;
+    this.prisma.produto.delete({where:{id}});
+    return 'O produto foi deletado com sucesso'
   }
 }

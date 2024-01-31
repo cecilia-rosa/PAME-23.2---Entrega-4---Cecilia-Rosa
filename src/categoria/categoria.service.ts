@@ -11,18 +11,19 @@ export class CategoriaService {
   }
 
   findAll() {
-    return `This action returns all categoria`;
+    return this.prisma.categoria.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} categoria`;
+    return this.prisma.categoria.findUnique({where: {id}});
   }
 
   update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
-    return `This action updates a #${id} categoria`;
+    return this.prisma.categoria.update({where:{id: id}, data: updateCategoriaDto});
   }
 
   remove(id: number) {
-    return `This action removes a #${id} categoria`;
+    this.prisma.categoria.delete({where:{id}});
+    return 'A categoria foi deletada com sucesso'
   }
 }
