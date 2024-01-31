@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRelatorioDto } from './dto/create-relatorio.dto';
 import { UpdateRelatorioDto } from './dto/update-relatorio.dto';
-import { PrismaService } from '../prisma/i/i.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class RelatorioService {

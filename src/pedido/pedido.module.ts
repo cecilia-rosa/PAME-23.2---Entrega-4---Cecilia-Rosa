@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { PedidoService } from './pedido.service';
 import { PedidoController } from './pedido.controller';
-import { PrismaService } from '../prisma/i/i.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Module({
   controllers: [PedidoController],
