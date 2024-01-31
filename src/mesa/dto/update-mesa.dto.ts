@@ -3,4 +3,5 @@ import { CreateMesaDto } from './create-mesa.dto';
 
 export class UpdateMesaDto extends PartialType(CreateMesaDto) {
     pessoas: number;
+    status: string;
 }

@@ -6,4 +6,5 @@ export class Pedido {
     valor_total: number;
     funcionarioId: number;
     relatorioId: number;
+    status: string;
 }

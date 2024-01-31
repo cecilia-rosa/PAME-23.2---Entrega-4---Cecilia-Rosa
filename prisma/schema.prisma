@@ -49,6 +49,7 @@ model mesa{
   funcionarioId Int
   funcionario funcionario @relation(fields: [funcionarioId], references: [id])
   pedidos pedido[]
+  status String
 }
 
 model pedido{
@@ -63,6 +64,7 @@ model pedido{
   relatorioId Int
   relatorio relatorio @relation(fields: [relatorioId], references: [id])
   produtos produto[]
+  status String
 }
 
 model relatorio{

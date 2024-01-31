@@ -7,4 +7,5 @@ export class UpdatePedidoDto extends PartialType(CreatePedidoDto) {
     valor_total: number;
     funcionarioId: number;
     relatorioId: number;
+    status: string;
 }
