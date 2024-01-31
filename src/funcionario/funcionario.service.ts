@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFuncionarioDto } from './dto/create-funcionario.dto';
 import { UpdateFuncionarioDto } from './dto/update-funcionario.dto';
-import { PrismaService } from 'src/prisma/i/i.service';
+import { PrismaService } from '../prisma/i/i.service';
 
 @Injectable()
 export class FuncionarioService {
