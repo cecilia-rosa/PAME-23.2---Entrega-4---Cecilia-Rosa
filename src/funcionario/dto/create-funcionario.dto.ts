@@ -2,6 +2,7 @@ import { IsEmail, IsNumberString } from "class-validator"; //para garantir forma
 import { CreateDateColumn } from 'typeorm'; //para automatizar a data
 
 
+
 export class CreateFuncionarioDto {
 
     nome: string;
@@ -9,13 +10,11 @@ export class CreateFuncionarioDto {
     @IsEmail()//confere se vai receber um email
     email: string;
 
-    @IsNumberString() //confere se vai receber um numero em string
-    cpf: number;
+    @IsNumberString() //confere se eh string de numero, string para zero a esquerda nao ser excluido
+    cpf: string;
 
-    @IsNumberString() //confere se vai receber um numero em string
     telefone: number;
 
-    @IsNumberString() //confere se vai receber um numero em string
     vendas: number;
 
     @CreateDateColumn({ name: 'data_cadastro' }) //data automaticamente a do dia da criacao do usuario

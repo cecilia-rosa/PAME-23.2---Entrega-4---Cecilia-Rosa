@@ -29,11 +29,15 @@ model produto{
   nome String
   disponibilidade String
   vendidos Int
+  categoriaId Int
+  categoria categoria @relation(fields: [categoriaId], references: [id])
+  pedidos pedido[]
 }
 
 model categoria{
   id Int @id @default(autoincrement()) @unique
   nome String
+  produtos produto[]
 }
 
 model mesa{
@@ -55,6 +59,7 @@ model pedido{
   mesa mesa @relation(fields: [mesaId], references: [id])
   relatorioId Int
   relatorio relatorio @relation(fields: [relatorioId], references: [id])
+  produtos produto[]
 }
 
 model relatorio{
