@@ -9,13 +9,13 @@ export class ProdutoController {
   constructor(private readonly produtoService: ProdutoService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Post()
+  @Post('criar')
   create(@Body() createProdutoDto: CreateProdutoDto) {
     return this.produtoService.create(createProdutoDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get()
+  @Get('todos')
   findAll() {
     return this.produtoService.findAll();
   }
@@ -27,13 +27,13 @@ export class ProdutoController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Patch(':id')
+  @Patch('atualizar/:id')
   update(@Param('id') id: string, @Body() updateProdutoDto: UpdateProdutoDto) {
     return this.produtoService.update(+id, updateProdutoDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':id')
+  @Delete('deletar/:id')
   remove(@Param('id') id: string) {
     return this.produtoService.remove(+id);
   }

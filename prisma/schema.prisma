@@ -17,11 +17,10 @@ model funcionario{
   cpf String @unique
   telefone Int
   vendas Int
-  data_cadastro DateTime @default(now())
+  data_cadastro DateTime
   senha String
   pedidos pedido[]
   mesas mesa[]
-  produtos produto[]
   relatorios relatorio[]
 }
 
@@ -34,7 +33,6 @@ model produto{
   categoriaId Int
   categoria categoria @relation(fields: [categoriaId], references: [id])
   pedidos pedido[]
-  funcionarios funcionario[]
 }
 
 model categoria{

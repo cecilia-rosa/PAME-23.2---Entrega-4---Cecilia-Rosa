@@ -9,12 +9,12 @@ export class CategoriaController {
   constructor(private readonly categoriaService: CategoriaService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Post()
+  @Post('criar')
   create(@Body() createCategoriaDto: CreateCategoriaDto) {
     return this.categoriaService.create(createCategoriaDto);
   }
 
-  @Get()
+  @Get('todas')
   findAll() {
     return this.categoriaService.findAll();
   }
@@ -25,13 +25,13 @@ export class CategoriaController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Patch(':id')
+  @Patch('atualizar/:id')
   update(@Param('id') id: string, @Body() updateCategoriaDto: UpdateCategoriaDto) {
     return this.categoriaService.update(+id, updateCategoriaDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':id')
+  @Delete('deletar/:id')
   remove(@Param('id') id: string) {
     return this.categoriaService.remove(+id);
   }

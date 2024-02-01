@@ -9,13 +9,13 @@ export class MesaController {
   constructor(private readonly mesaService: MesaService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Post()
+  @Post('criar')
   create(@Body() createMesaDto: CreateMesaDto) {
     return this.mesaService.create(createMesaDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get()
+  @Get('todas')
   findAll() {
     return this.mesaService.findAll();
   }
@@ -27,13 +27,13 @@ export class MesaController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Patch(':id')
+  @Patch('atualizar/:id')
   update(@Param('id') id: string, @Body() updateMesaDto: UpdateMesaDto) {
     return this.mesaService.update(+id, updateMesaDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':id')
+  @Delete('deletar/:id')
   remove(@Param('id') id: string) {
     return this.mesaService.remove(+id);
   }

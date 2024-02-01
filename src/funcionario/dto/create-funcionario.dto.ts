@@ -1,4 +1,5 @@
 import { IsEmail, IsNotEmpty, IsNumber, IsNumberString, IsString } from "class-validator"; //para garantir formatos
+import { CreateDateColumn } from 'typeorm'; //para automatizar a data
 
 
 
@@ -24,6 +25,7 @@ export class CreateFuncionarioDto {
     @IsNumber()
     vendas: number;
 
+    @CreateDateColumn({ name: 'data_cadastro' })
     data_cadastro: Date;
 
     @IsNotEmpty()

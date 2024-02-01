@@ -37,7 +37,7 @@ export class FuncionarioController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Patch(':id')
+  @Patch('atualizar/:id')
   update(@Param('id') id: string, @Body() updateFuncionarioDto: UpdateFuncionarioDto, @Request() req) {
     const funcionarioId = req.funcionario.id;
     if (funcionarioId != +id) {
@@ -53,7 +53,7 @@ export class FuncionarioController {
       throw new Error('Acesso não autorizado');
     } 
   }
-  @Delete(':id')
+  @Delete('deletar/:id')
   remove(@Param('id') id: string) {
     return this.funcionarioService.remove(+id);
   }

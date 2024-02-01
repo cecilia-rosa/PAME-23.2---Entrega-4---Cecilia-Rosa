@@ -9,7 +9,7 @@ export class RelatorioController {
   constructor(private readonly relatorioService: RelatorioService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Post()
+  @Post('criar')
   acessoRestrito(@Request() req) {
     const funcionario = req.funcionario; // Objeto do funcionário obtido do token JWT
     if (funcionario.id != 1) {
@@ -21,7 +21,7 @@ export class RelatorioController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get()
+  @Get('todos')
   findAll() {
     return this.relatorioService.findAll();
   }
@@ -34,7 +34,7 @@ export class RelatorioController {
 
 
   @UseGuards(JwtAuthGuard)
-  @Patch(':id')
+  @Patch('atualizar/:id')
   AcessoRestrito(@Request() req) {
     const funcionario = req.funcionario; // Objeto do funcionário obtido do token JWT
     if (funcionario.id != 1) {
@@ -46,7 +46,7 @@ export class RelatorioController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':id')
+  @Delete('deletar/:id')
   acessorestrito(@Request() req) {
     const funcionario = req.funcionario; // Objeto do funcionário obtido do token JWT
     if (funcionario.id != 1) {

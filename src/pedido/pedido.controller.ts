@@ -9,13 +9,13 @@ export class PedidoController {
   constructor(private readonly pedidoService: PedidoService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Post()
+  @Post('criar')
   create(@Body() createPedidoDto: CreatePedidoDto) {
     return this.pedidoService.create(createPedidoDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get()
+  @Get('todos')
   findAll() {
     return this.pedidoService.findAll();
   }
@@ -27,13 +27,13 @@ export class PedidoController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Patch(':id')
+  @Patch('atualizar/:id')
   update(@Param('id') id: string, @Body() updatePedidoDto: UpdatePedidoDto) {
     return this.pedidoService.update(+id, updatePedidoDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':id')
+  @Delete('deletar/:id')
   remove(@Param('id') id: string) {
     return this.pedidoService.remove(+id);
   }
