@@ -18,6 +18,10 @@ export class FuncionarioService {
     return this.prisma.funcionario.findUnique({where: {id}});
   }
 
+  findByEmail(email:string){
+    return this.prisma.funcionario.findUnique({where: {email: email}})
+  }
+
   update(id: number, updateFuncionarioDto: UpdateFuncionarioDto) {
     return this.prisma.funcionario.update({where: {id: id}, data: updateFuncionarioDto});
   }
