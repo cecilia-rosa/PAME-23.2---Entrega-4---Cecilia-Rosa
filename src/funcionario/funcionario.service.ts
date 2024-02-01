@@ -9,8 +9,8 @@ export class FuncionarioService {
   constructor(private readonly prisma: PrismaService){}
   async create(createFuncionarioDto: CreateFuncionarioDto) {
     return this.prisma.funcionario.create({
-      data: ...createFuncionarioDto,
-      senha: await bcrypt.hash.(createFuncionarioDto.senha, 10)
+      data:{ ...createFuncionarioDto,
+      senha: await bcrypt.hash(createFuncionarioDto.senha, 10)}
       
     });
   }
