@@ -17,7 +17,7 @@ model funcionario{
   cpf String @unique
   telefone Int
   vendas Int
-  data_cadastro DateTime
+  data_cadastro DateTime @default(now())
   senha String
   pedidos pedido[]
   mesas mesa[]
