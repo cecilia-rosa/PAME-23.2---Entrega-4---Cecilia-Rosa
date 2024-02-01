@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { FuncionarioService } from 'src/funcionario/funcionario.service';
 import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +15,7 @@ export class AuthService {
     async validateUser(email,senha){
         const funcionario = await this.funcionarioService.findByEmail(email)
 
-        if(!funcionario || funcionario.senha != senha){
+        if(!funcionario || (bcrypt.compare(funcionario.senha, senha))){
             throw new Error('Credenciais invalidas')
         }
 
