@@ -13,10 +13,11 @@ import { AuthService } from './auth/auth.service';
 import { FuncionarioService } from './funcionario/funcionario.service';
 import { LocalStrategy } from './auth/strategies/local.strategy';
 import { JwtService } from '@nestjs/jwt';
+import { JwtStrategy } from './auth/strategies/jwt.strategy';
 
 @Module({
   imports: [FuncionarioModule, ProdutoModule, CategoriaModule, MesaModule, PedidoModule, RelatorioModule, AuthModule],
   controllers: [AppController],
-  providers: [AppService, PrismaService, AuthService, FuncionarioService, LocalStrategy, JwtService],
+  providers: [AppService, PrismaService, AuthService, FuncionarioService, LocalStrategy, JwtService, JwtStrategy],
 })
 export class AppModule {}
