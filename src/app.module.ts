@@ -8,9 +8,10 @@ import { MesaModule } from './mesa/mesa.module';
 import { PedidoModule } from './pedido/pedido.module';
 import { RelatorioModule } from './relatorio/relatorio.module';
 import { PrismaService } from './prisma/prisma.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [FuncionarioModule, ProdutoModule, CategoriaModule, MesaModule, PedidoModule, RelatorioModule],
+  imports: [FuncionarioModule, ProdutoModule, CategoriaModule, MesaModule, PedidoModule, RelatorioModule, AuthModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
