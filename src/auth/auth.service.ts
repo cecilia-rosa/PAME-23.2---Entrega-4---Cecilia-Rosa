@@ -15,7 +15,7 @@ export class AuthService {
     async validateUser(email,senha){
         const funcionario = await this.funcionarioService.findByEmail(email)
 
-        if(!funcionario || (bcrypt.compare(funcionario.senha, senha))){
+        if(!funcionario || !(bcrypt.compare(senha, funcionario.senha))){
             throw new Error('Credenciais invalidas')
         }
 
