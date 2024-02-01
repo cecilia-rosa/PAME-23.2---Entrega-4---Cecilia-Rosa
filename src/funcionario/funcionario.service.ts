@@ -11,7 +11,6 @@ export class FuncionarioService {
     return this.prisma.funcionario.create({
       data:{ ...createFuncionarioDto,
       senha: await bcrypt.hash(createFuncionarioDto.senha, 10)}
-      
     });
   }
 

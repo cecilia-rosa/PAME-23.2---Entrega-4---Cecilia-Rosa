@@ -6,12 +6,12 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy){
     constructor(
-        private readonly AuthService: AuthService
+        private readonly authService: AuthService
     ){
-        super({usernamefield: 'email', passwordfield: 'senha'})
+        super({usernameField: 'email', passwordField: 'senha'})
     }
 
     validate(email:string, senha:string){
-        return AuthService.validateUser(email, senha)
+        return this.authService.validateUser(email, senha)
     }
 }
