@@ -24,6 +24,8 @@ export class CreateFuncionarioDto {
     @IsNumber()
     vendas: number;
 
+    data_cadastro: Date;
+
     @IsNotEmpty()
     @IsString()
     senha: string;

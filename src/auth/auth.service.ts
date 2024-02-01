@@ -18,7 +18,7 @@ export class AuthService {
             throw new Error('Credenciais invalidas')
         }
 
-        return {...funcionario , senha:undefined}
+        return {...funcionario, senha:undefined}
     }
 
     login(funcionario){
