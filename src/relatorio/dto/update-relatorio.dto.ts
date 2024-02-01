@@ -6,9 +6,9 @@ export class UpdateRelatorioDto extends PartialType(CreateRelatorioDto) {
 
     @IsNotEmpty()
     @IsNumber()
-    total_pedidos: number;
+    total_pedidos: number; //deve ser automaticamente somado quando os pedidos sao feitos
 
     @IsNotEmpty()
     @IsNumber()
-    receita: number;
+    receita: number; //soma dos valores de cada pedido, tambem ainda a ser implementado
 }

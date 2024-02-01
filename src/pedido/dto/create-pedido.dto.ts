@@ -21,11 +21,11 @@ export class CreatePedidoDto {
 
     @IsNotEmpty()
     @IsNumber()
-    funcionarioId: number;
+    funcionarioId: number; //ideia eh ser automatizado com o id do funcionario logado, falta ser implementado
 
     @IsNotEmpty()
     @IsNumber()
-    relatorioId: number;
+    relatorioId: number; //deve ser automaticamente o ultimo relatorio criado
 
     @IsNotEmpty()
     @IsString()

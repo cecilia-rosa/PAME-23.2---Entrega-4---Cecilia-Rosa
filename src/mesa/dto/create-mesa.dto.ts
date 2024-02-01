@@ -7,7 +7,7 @@ export class CreateMesaDto {
 
     @IsNotEmpty()
     @IsNumber()
-    funcionarioId: number;
+    funcionarioId: number; //ideia eh ser automatizado id do funcionario logado, a ser implementado ainda
 
     @IsNotEmpty()
     @IsString()

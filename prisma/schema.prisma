@@ -19,9 +19,9 @@ model funcionario{
   vendas Int
   data_cadastro DateTime
   senha String
-  pedidos pedido[]
-  mesas mesa[]
-  relatorios relatorio[]
+  pedidos pedido[] //relacao one to many com mesas, anotam varios
+  mesas mesa[] //relacao one to many com mesas, atendem varias
+  relatorios relatorio[] //presentes em varios relatorios
 }
 
 model produto{
@@ -30,38 +30,38 @@ model produto{
   nome String
   disponibilidade String
   vendidos Int
-  categoriaId Int
+  categoriaId Int //relacao many to one com categoria, produto so pode pertencer a uma
   categoria categoria @relation(fields: [categoriaId], references: [id])
-  pedidos pedido[]
+  pedidos pedido[] //armazena pedidos desse produto
 }
 
 model categoria{
   id Int @id @default(autoincrement()) @unique
-  nome String
-  produtos produto[]
+  nome String //titulo da categoria
+  produtos produto[] //conjunto de pedidos pertencentes a essa categoria
 }
 
 model mesa{
   id Int @id @default(autoincrement()) @unique
   pessoas Int
-  funcionarioId Int
+  funcionarioId Int //relacao many to one com funcionario, apenas um atende a mesa
   funcionario funcionario @relation(fields: [funcionarioId], references: [id])
-  pedidos pedido[]
+  pedidos pedido[] //relacao one to many com pedidos
   status String
 }
 
 model pedido{
   id Int @id @default(autoincrement()) @unique
   nome_cliente String
-  mesaId Int
+  mesaId Int //relacao many to one com mesa, uma mesa com varias comandas por exemplo
   data DateTime
   valor_total Int
-  funcionarioId Int
+  funcionarioId Int //relacao many to one com funcionario
   funcionario funcionario @relation(fields: [funcionarioId], references: [id])
   mesa mesa @relation(fields: [mesaId], references: [id])
-  relatorioId Int
+  relatorioId Int //dados salvos em um relatorio
   relatorio relatorio @relation(fields: [relatorioId], references: [id])
-  produtos produto[]
+  produtos produto[] //relacao many to many com pedido
   status String
 }
 
@@ -69,7 +69,7 @@ model relatorio{
   id Int @id @default(autoincrement()) @unique
   total_pedidos Int
   receita Int
-  pedidos pedido[]
-  funcionarios funcionario[]
+  pedidos pedido[] //dados dos pedidos em determinado periodo
+  funcionarios funcionario[] //dados dos funcionarios em determinado periodo
 }
-
+//explicacoes a respeito do funcionamento do relatorio estao nos arquivos da pasta relatorio
